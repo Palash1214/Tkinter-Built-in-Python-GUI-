@@ -1,25 +1,9 @@
-import tkinter as tk
+from flask import Flask
 
-# Create main window
-root = tk.Tk()
+app = Flask(__name__)
 
-# Window title
-root.title("My First Python App")
+@app.route("/")
+def home():
+    return "Hello from Flask Docker App"
 
-# Window size
-root.geometry("400x300")
-
-# Label
-label = tk.Label(root, text="Hello Palash!", font=("Arial", 18))
-label.pack(pady=20)
-
-# Button function
-def clicked():
-    label.config(text="Button Clicked!")
-
-# Button
-button = tk.Button(root, text="Click Me", command=clicked)
-button.pack()
-
-# Run application
-root.mainloop()
+app.run(host="0.0.0.0", port=5000)
